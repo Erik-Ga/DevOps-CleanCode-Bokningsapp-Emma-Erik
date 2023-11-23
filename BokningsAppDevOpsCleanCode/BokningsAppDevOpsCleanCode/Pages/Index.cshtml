@@ -4,33 +4,6 @@
 @{
     ViewData["Title"] = "Home page";
 }
-
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <table>
-        <tr>
-            <th>Sun</th>
-            <th>Mon</th>
-            <th>Tue</th>
-            <th>Wed</th>
-            <th>Thu</th>
-            <th>Fri</th>
-            <th>Sat</th>
-        </tr>
-        @foreach (var week in Model.Calander.Weeks)
-        {
-            <tr>
-                @foreach (var day in week.Days)
-                {
-                    <td>
-                        <span>@day.Date</span>
-                        @foreach (var booking in day)
-                        {
-                            <div>@booking.TimeSlot - @booking.UserName</div>
-                        }
-                    </td>
-                }
-            </tr>
-        }
-    </table>
+<div>
+    <h1 class="welcomeTitle">Välkommen till <strong><i>Fotfager</i></strong></h1>
 </div>
