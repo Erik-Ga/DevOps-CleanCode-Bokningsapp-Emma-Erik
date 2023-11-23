@@ -1,0 +1,30 @@
+﻿@page
+@model BokningsAppDevOpsCleanCode.Pages.Boka_behandlingModel
+@{
+}
+<div class="text-center">
+    <h1>Calendar - @Model.CurrentYear</h1>
+    <h2>@Model.MonthInLetters</h2>
+    <table>
+        <tbody>
+            @foreach (var week in Model.CalendarWeeks)
+            {
+                <tr>
+                    @foreach (var day in week)
+                    {
+                        <td>
+                            @if (day > 0)
+                            {
+                                <button class="day-button" onclick="location.href='@Url.Page("YourPageName", new { year = Model.CurrentYear, month = Model.CurrentMonth, day = day })'">@day</button>
+                            }
+                            else
+                            {
+                                <span>&nbsp;</span>
+                            }
+                        </td>
+                    }
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
