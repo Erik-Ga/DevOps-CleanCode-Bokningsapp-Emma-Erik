@@ -1,10 +1,36 @@
 ﻿@page
 @model IndexModel
+
 @{
     ViewData["Title"] = "Home page";
 }
 
 <div class="text-center">
     <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <table>
+        <tr>
+            <th>Sun</th>
+            <th>Mon</th>
+            <th>Tue</th>
+            <th>Wed</th>
+            <th>Thu</th>
+            <th>Fri</th>
+            <th>Sat</th>
+        </tr>
+        @foreach (var week in Model.Calander.Weeks)
+        {
+            <tr>
+                @foreach (var day in week.Days)
+                {
+                    <td>
+                        <span>@day.Date</span>
+                        @foreach (var booking in day)
+                        {
+                            <div>@booking.TimeSlot - @booking.UserName</div>
+                        }
+                    </td>
+                }
+            </tr>
+        }
+    </table>
 </div>

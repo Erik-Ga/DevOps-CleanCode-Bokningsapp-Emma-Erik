@@ -1,20 +1,21 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using BokningsAppDevOpsCleanCode.Models;
 
 namespace BokningsAppDevOpsCleanCode.Pages
 {
     public class IndexModel : PageModel
     {
-        private readonly ILogger<IndexModel> _logger;
-
-        public IndexModel(ILogger<IndexModel> logger)
+        public IndexModel()
         {
-            _logger = logger;
-        }
 
+        }
+        public Calander Calander { get; set; }
+        public Week Week { get; set; }
+        public Day Day { get; set; }
+        public Time Time { get; set; }
         public void OnGet()
         {
-
         }
     }
 }
