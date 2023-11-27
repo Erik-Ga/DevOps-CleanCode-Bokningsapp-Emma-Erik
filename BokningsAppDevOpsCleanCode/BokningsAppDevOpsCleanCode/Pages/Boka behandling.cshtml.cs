@@ -1,3 +1,5 @@
+using BokningsAppDevOpsCleanCode.Data;
+using BokningsAppDevOpsCleanCode.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using System;
@@ -64,6 +66,7 @@ namespace BokningsAppDevOpsCleanCode.Pages
             return RedirectToPage("Boka_behandling", new { year = CurrentYear, month = CurrentMonth });
         }
 
+
         private void UpdateCalendar()
         {
             // Generate the calendar for the current year and month
@@ -74,7 +77,6 @@ namespace BokningsAppDevOpsCleanCode.Pages
         {
             return year >= 1 && month >= 1 && month <= 12;
         }
-
 
         private List<List<int>> GenerateCalendar(int year, int month)
         {

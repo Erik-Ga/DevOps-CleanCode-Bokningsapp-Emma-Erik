@@ -59,3 +59,14 @@ th, td {
     text-align: center;
     height: 90px;
 }
+.form {
+    border: 3px solid black;
+    padding: 30px;
+}
+.formButton{
+    margin-top: 100px;
+}
+.disabled-day {
+    color: #808080; /* Change the color to visually indicate the disabled state */
+    cursor: not-allowed;
+}

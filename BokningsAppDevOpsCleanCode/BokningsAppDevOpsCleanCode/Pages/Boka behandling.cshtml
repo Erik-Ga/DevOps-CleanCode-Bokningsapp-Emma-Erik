@@ -1,6 +1,7 @@
 ﻿@page
 @model BokningsAppDevOpsCleanCode.Pages.Boka_behandlingModel
 @using System.Globalization
+
 <div class="text-center">
     <h1>Calendar - @Model.CurrentYear</h1>
     <h2>@CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(Model.CurrentMonth)</h2>
@@ -23,7 +24,18 @@
                         <td>
                             @if (day > 0)
                             {
-                                <button class="day-button" onclick="location.href='@Url.Page("YourPageName", new { year = Model.CurrentYear, month = Model.CurrentMonth, day = day })'">@day</button>
+                                // Check if the date is before today
+                                bool isClickable = new DateTime(@Model.CurrentYear, @Model.CurrentMonth, day) >= DateTime.Today;
+
+                                // Render the button with or without the onclick attribute based on the condition
+                                if (isClickable)
+                                {
+                                    <button class="day-button" onclick="showForm(@day)">@day</button>
+                                }
+                                else
+                                {
+                                    <span class="disabled-day">@day</span>
+                                }
                             }
                             else
                             {
@@ -35,4 +47,66 @@
             }
         </tbody>
     </table>
+
+    <br />
+
+    <!-- Form to display when a day is clicked -->
+    <div class="form" id="form-container" style="display: none;">
+        <form>
+            <label for="selectedDate">Valt datum:</label>
+            <input type="text" id="selectedDate" name="selectedDate" readonly>
+
+            <br />
+
+            <label for="time">Välj tid:</label>
+            <select id="time" name="time">
+                <option value="09:00">09:00-10:00</option>
+                <option value="10:00">10:00-11:00</option>
+                <option value="11:00">11:00-12:00</option>
+                <option value="13:00">13:00-14:00</option>
+                <option value="14:00">14:00-15:00</option>
+                <option value="15:00">15:00-16:00</option>
+                <option value="16:00">16:00-17:00</option>
+            </select>
+
+            <br>
+
+            <label for="treatment">Välj behandling:</label>
+            <select id="treatment" name="treatment">
+                <option value="treatment1">Fotmassage</option>
+                <option value="treatment2">Peeling</option>
+                <option value="treatment3">Nagelvård</option>
+                <option value="treatment4">Liktornbehandling</option>
+                <option value="treatment5">Medicinsk fotvård</option>
+            </select>
+
+            <br>
+
+            <label for="name">Ditt namn:</label>
+            <input type="text" id="name" name="name">
+
+            <br>
+
+            <button class="formButton btn-danger" type="button" onclick="hideForm()">Close Form</button>
+            <button class="formButton btn-success" type="button" onclick="bookAppointment()">Book Appointment</button>
+        </form>
+    </div>
+
+    <script>
+        function showForm(day) {
+            // Display the form and set the day value
+            document.getElementById('form-container').style.display = 'block';
+
+            // Set the selected date in the form
+            document.getElementById('selectedDate').value = day + '/' + @Model.CurrentMonth + '/' + @Model.CurrentYear;
+
+            // Set the day value in the textbox
+            document.getElementById('textbox').value = day;
+        }
+
+        function hideForm() {
+            // Hide the form
+            document.getElementById('form-container').style.display = 'none';
+        }
+    </script>
 </div>

@@ -12,9 +12,5 @@ namespace BokningsAppDevOpsCleanCode.Data
 
         }
         public DbSet<Models.Booking> Bookings { get; set; }
-        public DbSet<Models.Calander> Calenders { get; set; }
-        public DbSet<Models.Day> Days { get; set; }
-        public DbSet<Models.Time> Times { get; set; }
-        public DbSet<Models.Week> Weeks { get; set; }
     }
 }
