@@ -1,10 +1,18 @@
 ﻿@page
 @model BokningsAppDevOpsCleanCode.Pages.Boka_behandlingModel
-@{
-}
+@using System.Globalization
 <div class="text-center">
     <h1>Calendar - @Model.CurrentYear</h1>
-    <h2>@Model.MonthInLetters</h2>
+    <h2>@CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(Model.CurrentMonth)</h2>
+
+    <!-- Navigation buttons -->
+    <div>
+        <a class="btn btn-primary" asp-page-handler="OnGetPreviousMonth" asp-route-year="@(Model.CurrentMonth == 1 ? Model.CurrentYear - 1 : Model.CurrentYear)"
+           asp-route-month="@(Model.CurrentMonth == 1 ? 12 : Model.CurrentMonth - 1)">Previous Month</a>
+        <a class="btn btn-primary" asp-page-handler="OnGetNextMonth" asp-route-year="@(Model.CurrentMonth == 12 ? Model.CurrentYear + 1 : Model.CurrentYear)"
+           asp-route-month="@(Model.CurrentMonth == 12 ? 1 : Model.CurrentMonth + 1)">Next Month</a>
+    </div>
+
     <table>
         <tbody>
             @foreach (var week in Model.CalendarWeeks)
