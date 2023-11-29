@@ -95,10 +95,10 @@ th, td {
 }
 .social-media-icons {
     display: flex;
-    gap: 10px;
+    gap: 40px;
 }
 
 .social-icon img {
-    width: 20px; /* Adjust the width as needed */
-    height: 20px; /* Adjust the height as needed */
+    width: 50px; /* Adjust the width as needed */
+    height: 40px; /* Adjust the height as needed */
 }
