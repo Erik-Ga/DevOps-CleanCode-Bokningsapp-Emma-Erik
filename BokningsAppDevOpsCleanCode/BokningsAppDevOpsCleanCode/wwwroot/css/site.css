@@ -102,3 +102,28 @@ th, td {
     width: 50px; /* Adjust the width as needed */
     height: 40px; /* Adjust the height as needed */
 }
+.container {
+    max-width: 800px;
+    margin: auto;
+    padding: 20px;
+}
+
+.contact-details {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.opening-hours,
+.contact-methods {
+    width: 45%;
+}
+
+    .opening-hours h3,
+    .contact-methods h3 {
+        margin-bottom: 10px;
+    }
+
+    .contact-methods a {
+        color: #007bff;
+    }
