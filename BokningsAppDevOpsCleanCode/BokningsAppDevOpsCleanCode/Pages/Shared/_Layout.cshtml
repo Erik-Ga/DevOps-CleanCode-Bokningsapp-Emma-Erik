@@ -46,6 +46,12 @@
                                 <a class="nav-link text-dark" asp-area="" asp-page="/PersonalPage">Personlig sida</a>
                             </li>
                         }
+                        @if (user != null && user.Id == "950b0bde-1c82-4f97-917d-8094c502e306")
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-page="/AdminPage">Admin</a>
+                            </li>
+                        }
                     </ul>
                     <partial name="_LoginPartial" />
                 </div>
