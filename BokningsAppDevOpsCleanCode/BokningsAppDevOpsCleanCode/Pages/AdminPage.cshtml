@@ -1,4 +1,27 @@
 ﻿@page
 @model BokningsAppDevOpsCleanCode.Pages.AdminPageModel
-@{
-}
+
+<div class="text-center">
+    <h1>All Bookings</h1>
+
+    @if (Model.AllBookings != null && Model.AllBookings.Any())
+    {
+        @foreach (var booking in Model.AllBookings)
+        {
+            <div style="border: 1px solid #ccc; padding: 10px; margin-bottom: 10px;">
+                <p>Datum och Tid: @booking.ChosenDateTime.ToString("yyyy-MM-dd")</p>
+                <p>Vald tid: @booking.ChosenTime</p>
+                <p>Vald behandling: @booking.ChosenTreatment</p>
+                <p>Kundnamn: @booking.CustomerName</p>
+                <p>Email: @booking.UserId</p>
+                <form method="post" asp-page-handler="CancelBooking" asp-route-bookingId="@booking.Id">
+                    <button type="submit">Cancel Booking</button>
+                </form>
+            </div>
+        }
+    }
+    else
+    {
+        <p>No bookings found.</p>
+    }
+</div>
