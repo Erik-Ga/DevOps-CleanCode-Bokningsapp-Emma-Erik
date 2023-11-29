@@ -1,4 +1,5 @@
 using BokningsAppDevOpsCleanCode.Data;
+using BokningsAppDevOpsCleanCode.Services;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
@@ -19,7 +20,7 @@ namespace BokningsAppDevOpsCleanCode
             builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddEntityFrameworkStores<ApplicationDbContext>();
             builder.Services.AddRazorPages();
-
+            builder.Services.AddScoped<BookingService>();
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
