@@ -1,30 +1,31 @@
 html {
-  font-size: 14px;
+    font-size: 14px;
 }
 
 @media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
+    html {
+        font-size: 16px;
+    }
 }
 
 .btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
-  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+    box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
 }
+
 .bannerMenu {
     font-family: 'Monotype Corsiva';
     font-size: 30px;
-
 }
+
 .bannerLogo {
     font-family: 'Monotype Corsiva';
     font-size: 50px;
-    text-align:center;
+    text-align: center;
 }
 
 html {
-  position: relative;
-  min-height: 100%;
+    position: relative;
+    min-height: 100%;
 }
 
 body {
@@ -43,11 +44,13 @@ body {
     font-size: x-large;
     font-weight: bold;
 }
-.welcomeTitle{
+
+.welcomeTitle {
     text-align: center;
-    font-family:'Monotype Corsiva';
+    font-family: 'Monotype Corsiva';
     font-size: 100px;
 }
+
 table {
     border-collapse: collapse;
     width: 100%;
@@ -59,14 +62,34 @@ th, td {
     text-align: center;
     height: 90px;
 }
+
 .form {
     border: 3px solid black;
     padding: 30px;
 }
-.formButton{
+
+.formButton {
     margin-top: 100px;
 }
+
 .disabled-day {
     color: #808080; /* Change the color to visually indicate the disabled state */
     cursor: not-allowed;
+}
+
+.price-table {
+    width: 50%;
+    margin: auto;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.price-table th, .price-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+.price-table th {
+    background-color: #f2f2f2;
 }
