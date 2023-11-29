@@ -40,8 +40,10 @@ namespace BokningsAppDevOpsCleanCode.Pages
             _context.Bookings.Add(booking);
             _context.SaveChanges();
 
+            _Booking = booking;
+
             // Redirect to a confirmation page or back to the calendar page
-            return RedirectToPage("/Index");
+            return RedirectToPage("/Boka behandling");
         }
         public IActionResult OnGet(int year, int month)
         {

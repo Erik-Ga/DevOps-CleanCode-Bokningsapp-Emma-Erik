@@ -50,6 +50,14 @@
 
     <br />
 
+    @if (Model._Booking != null)
+    {
+        <p>Customer Name: @Model._Booking.CustomerName</p>
+        <p>Chosen Treatment: @Model._Booking.ChosenTreatment</p>
+        <p>Chosen Date and Time: @Model._Booking.ChosenDateTime.ToString("dd/MM/yyyy") @Model._Booking.ChosenTime</p>
+    }
+
+
     <!-- Form to display when a day is clicked -->
     <div class="form" id="form-container" style="display: none;">
         <form method="post" asp-page-handler="BookAppointment">
@@ -90,7 +98,9 @@
             <button class="formButton btn-danger" type="button" onclick="hideForm()">Close Form</button>
             <button class="formButton btn-success" type="submit">Book Appointment</button>
         </form>
+
     </div>
+
 
     <script>
         function showForm(day) {
