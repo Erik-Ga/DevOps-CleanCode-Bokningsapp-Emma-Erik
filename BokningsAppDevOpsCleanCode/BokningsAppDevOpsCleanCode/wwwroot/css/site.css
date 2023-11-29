@@ -93,3 +93,12 @@ th, td {
 .price-table th {
     background-color: #f2f2f2;
 }
+.social-media-icons {
+    display: flex;
+    gap: 40px;
+}
+
+.social-icon img {
+    width: 50px; /* Adjust the width as needed */
+    height: 40px; /* Adjust the height as needed */
+}
