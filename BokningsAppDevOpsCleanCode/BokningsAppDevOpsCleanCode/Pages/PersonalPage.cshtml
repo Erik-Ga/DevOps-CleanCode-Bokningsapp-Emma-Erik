@@ -9,9 +9,10 @@
             @foreach (var booking in Model.Bookings)
             {
                 <div style="border: 1px solid #ccc; padding: 10px; margin-bottom: 10px;">
-                    <p>Date and Time: @booking.ChosenDateTime.ToString("yyyy-MM-dd HH:mm")</p>
-                    <p>Chosen Treatment: @booking.ChosenTreatment</p>
-                    <p>Customer Name: @booking.CustomerName</p>
+                    <p>Datum: @booking.ChosenDateTime.ToString("yyyy-MM-dd")</p>
+                    <p>Tid: @booking.ChosenTime</p>
+                    <p>Behandling: @booking.ChosenTreatment</p>
+                    <p>Namn: @booking.CustomerName</p>
                     <form method="post" asp-page-handler="CancelBooking" asp-route-bookingId="@booking.UserId">
                         <button type="submit">Cancel Booking</button>
                     </form>

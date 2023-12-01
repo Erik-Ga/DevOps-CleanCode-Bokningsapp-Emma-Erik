@@ -12,6 +12,10 @@ namespace BokningsAppDevOpsCleanCode.Pages
         private readonly ApplicationDbContext _context;
         public int CurrentYear { get; set; }
         public int CurrentMonth { get; set; }
+        [TempData]
+        public bool IsTimeBooked { get; set; }
+        [TempData]
+        public bool BookingSuccess { get; set; }
 
         [BindProperty]
         public Booking _Booking { get; set; }
@@ -19,29 +23,6 @@ namespace BokningsAppDevOpsCleanCode.Pages
         public Boka_behandlingModel(ApplicationDbContext context)
         {
             _context = context;
-        }
-        [HttpPost]
-        public IActionResult OnPostBookAppointment(string selectedDate, string time, string treatment, string name)
-        {
-            // Parse the selected date
-            DateTime chosenDateTime = DateTime.ParseExact(selectedDate, "d/M/yyyy", CultureInfo.InvariantCulture);
-
-            // Create a new Booking object
-            var booking = new Booking
-            {
-                ChosenDateTime = chosenDateTime,
-                ChosenTime = time,
-                ChosenTreatment = treatment,
-                CustomerName = name,
-                UserId = User.Identity.Name // Assuming you are using authentication and want to associate the booking with the logged-in user
-            };
-
-            // Add the booking to the database and save changes
-            _context.Bookings.Add(booking);
-            _context.SaveChanges();
-
-            // Redirect to a confirmation page or back to the calendar page
-            return RedirectToPage("/Boka behandling");
         }
         public IActionResult OnGet(int year, int month)
         {
@@ -63,6 +44,54 @@ namespace BokningsAppDevOpsCleanCode.Pages
 
             return Page();
         }
+        [HttpPost]
+        public IActionResult OnPostBookAppointment(string selectedDate, string time, string treatment, string name)
+        {
+            // Parse the selected date
+            DateTime chosenDateTime = DateTime.ParseExact(selectedDate, "d/M/yyyy", CultureInfo.InvariantCulture);
+
+            // Check if a booking with the same ChosenDateTime and ChosenTime already exists
+            var existingBooking = GetExistingBooking(chosenDateTime, time);
+
+            if (existingBooking != null)
+            {
+                // Return an error message
+                IsTimeBooked = true;
+                return RedirectToPage("/Boka behandling");
+            }
+
+            // Create a new Booking object
+            var booking = new Booking
+            {
+                ChosenDateTime = chosenDateTime,
+                ChosenTime = time,
+                ChosenTreatment = treatment,
+                CustomerName = name,
+                UserId = User.Identity.Name // Assuming you are using authentication and want to associate the booking with the logged-in user
+            };
+
+            // Add the booking to the database and save changes
+            _context.Bookings.Add(booking);
+            _context.SaveChanges();
+
+
+            BookingSuccess = true;
+
+            // Redirect to a confirmation page or back to the calendar page
+            return RedirectToPage("/Boka behandling");
+        }
+
+        private Booking GetExistingBooking(DateTime chosenDateTime, string chosenTime)
+        {
+            // Check if a booking with the same ChosenDateTime and ChosenTime already exists
+            return _context.Bookings
+                .FirstOrDefault(b =>
+                    b.ChosenDateTime == chosenDateTime &&
+                    b.ChosenTime == chosenTime
+                );
+        }
+
+
 
         public IActionResult OnGetNextMonth()
         {
