@@ -3,6 +3,7 @@
 @using System.Globalization
 
 <div class="text-center">
+    @Html.ValidationMessage("ChosenTime")
     <h1>Calendar - @Model.CurrentYear</h1>
     <h2>@CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(Model.CurrentMonth)</h2>
 
@@ -90,7 +91,6 @@
             <button class="formButton btn-danger" type="button" onclick="hideForm()">Close Form</button>
             <button class="formButton btn-success" type="submit">Book Appointment</button>
         </form>
-
     </div>
 
     <script>
