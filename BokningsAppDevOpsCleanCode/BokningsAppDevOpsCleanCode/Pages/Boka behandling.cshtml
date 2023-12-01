@@ -3,7 +3,6 @@
 @using System.Globalization
 
 <div class="text-center">
-    @Html.ValidationMessage("ChosenTime")
     <h1>Calendar - @Model.CurrentYear</h1>
     <h2>@CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(Model.CurrentMonth)</h2>
 
@@ -108,6 +107,21 @@
         function hideForm() {
             // Hide the form
             document.getElementById('form-container').style.display = 'none';
+        }
+
+        @if (Model.IsTimeBooked)
+        {
+            // Display an alert with the error message
+            <text>
+                alert('Tid redan bokad, vänligen försök med en annan tid!');
+            </text>
+        }
+        @if (Model.BookingSuccess)
+        {
+            // Display an alert with the error message
+            <text>
+                alert('Bokning lyckad!');
+            </text>
         }
     </script>
 </div>

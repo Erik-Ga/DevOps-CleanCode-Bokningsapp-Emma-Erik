@@ -12,6 +12,10 @@ namespace BokningsAppDevOpsCleanCode.Pages
         private readonly ApplicationDbContext _context;
         public int CurrentYear { get; set; }
         public int CurrentMonth { get; set; }
+        [TempData]
+        public bool IsTimeBooked { get; set; }
+        [TempData]
+        public bool BookingSuccess { get; set; }
 
         [BindProperty]
         public Booking _Booking { get; set; }
@@ -52,7 +56,7 @@ namespace BokningsAppDevOpsCleanCode.Pages
             if (existingBooking != null)
             {
                 // Return an error message
-                ModelState.AddModelError("ChosenTime", "Tid redan bokad");
+                IsTimeBooked = true;
                 return RedirectToPage("/Boka behandling");
             }
 
@@ -69,6 +73,9 @@ namespace BokningsAppDevOpsCleanCode.Pages
             // Add the booking to the database and save changes
             _context.Bookings.Add(booking);
             _context.SaveChanges();
+
+
+            BookingSuccess = true;
 
             // Redirect to a confirmation page or back to the calendar page
             return RedirectToPage("/Boka behandling");
