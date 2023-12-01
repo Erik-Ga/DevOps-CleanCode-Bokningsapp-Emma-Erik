@@ -2,17 +2,47 @@ using BokningsAppDevOpsCleanCode.Data;
 using BokningsAppDevOpsCleanCode.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using System;
+using Microsoft.EntityFrameworkCore;
 using System.Globalization;
 
 namespace BokningsAppDevOpsCleanCode.Pages
 {
     public class Boka_behandlingModel : PageModel
     {
+        private readonly ApplicationDbContext _context;
         public int CurrentYear { get; set; }
         public int CurrentMonth { get; set; }
-        public List<List<int>> CalendarWeeks { get; set; }
 
+        [BindProperty]
+        public Booking _Booking { get; set; }
+        public List<List<int>> CalendarWeeks { get; set; }
+        public Boka_behandlingModel(ApplicationDbContext context)
+        {
+            _context = context;
+        }
+        [HttpPost]
+        public IActionResult OnPostBookAppointment(string selectedDate, string time, string treatment, string name)
+        {
+            // Parse the selected date
+            DateTime chosenDateTime = DateTime.ParseExact(selectedDate, "d/M/yyyy", CultureInfo.InvariantCulture);
+
+            // Create a new Booking object
+            var booking = new Booking
+            {
+                ChosenDateTime = chosenDateTime,
+                ChosenTime = time,
+                ChosenTreatment = treatment,
+                CustomerName = name,
+                UserId = User.Identity.Name // Assuming you are using authentication and want to associate the booking with the logged-in user
+            };
+
+            // Add the booking to the database and save changes
+            _context.Bookings.Add(booking);
+            _context.SaveChanges();
+
+            // Redirect to a confirmation page or back to the calendar page
+            return RedirectToPage("/Boka behandling");
+        }
         public IActionResult OnGet(int year, int month)
         {
             // If the provided year and month are valid, use them; otherwise, use the current date
@@ -65,7 +95,6 @@ namespace BokningsAppDevOpsCleanCode.Pages
             // Redirect to the current page with updated parameters
             return RedirectToPage("Boka_behandling", new { year = CurrentYear, month = CurrentMonth });
         }
-
 
         private void UpdateCalendar()
         {
