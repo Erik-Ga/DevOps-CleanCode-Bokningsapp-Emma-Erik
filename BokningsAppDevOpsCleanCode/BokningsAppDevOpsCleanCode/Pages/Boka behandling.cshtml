@@ -113,14 +113,48 @@
         {
             // Display an alert with the error message
             <text>
-                alert('Tid redan bokad, vänligen försök med en annan tid!');
+                        var alertDiv = document.createElement('div');
+            alertDiv.className = 'centered-alert';
+
+            var message = document.createElement('div');
+            message.textContent = 'Tid redan bokad, vänligen försök igen med annan tid!';
+            alertDiv.appendChild(message);
+
+            var closeButton = document.createElement('button');
+            closeButton.textContent = 'Stäng';
+            closeButton.onclick = function () {
+                alertDiv.style.display = 'none'; // Hide the alert
+                // Set IsTimeBooked to false
+                @Model.IsTimeBooked = false;
+            };
+
+            alertDiv.appendChild(closeButton);
+
+            document.body.appendChild(alertDiv);
             </text>
         }
         @if (Model.BookingSuccess)
         {
             // Display an alert with the error message
             <text>
-                alert('Bokning lyckad!');
+                                    var alertDiv = document.createElement('div');
+            alertDiv.className = 'centered-alert';
+
+            var message = document.createElement('div');
+            message.textContent = 'Bokning lyckad!';
+            alertDiv.appendChild(message);
+
+            var closeButton = document.createElement('button');
+            closeButton.textContent = 'Ok';
+            closeButton.onclick = function () {
+                alertDiv.style.display = 'none'; // Hide the alert
+                // Set IsTimeBooked to false
+                @Model.BookingSuccess = false;
+            };
+
+            alertDiv.appendChild(closeButton);
+
+            document.body.appendChild(alertDiv);
             </text>
         }
     </script>
