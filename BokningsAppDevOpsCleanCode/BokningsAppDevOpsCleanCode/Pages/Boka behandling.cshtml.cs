@@ -24,7 +24,7 @@ namespace BokningsAppDevOpsCleanCode.Pages
         public IActionResult OnPostBookAppointment(string selectedDate, string time, string treatment, string name)
         {
             // Parse the selected date
-            DateTime chosenDateTime = DateTime.ParseExact(selectedDate, "dd/MM/yyyy", CultureInfo.InvariantCulture);
+            DateTime chosenDateTime = DateTime.ParseExact(selectedDate, "d/M/yyyy", CultureInfo.InvariantCulture);
 
             // Create a new Booking object
             var booking = new Booking
@@ -39,8 +39,6 @@ namespace BokningsAppDevOpsCleanCode.Pages
             // Add the booking to the database and save changes
             _context.Bookings.Add(booking);
             _context.SaveChanges();
-
-            _Booking = booking;
 
             // Redirect to a confirmation page or back to the calendar page
             return RedirectToPage("/Boka behandling");
