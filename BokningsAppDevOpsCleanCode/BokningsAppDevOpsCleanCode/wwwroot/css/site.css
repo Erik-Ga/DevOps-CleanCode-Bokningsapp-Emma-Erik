@@ -28,21 +28,29 @@ html {
     min-height: 100%;
 }
 
+footer{
+    text-align:center;
+}
 body {
     margin-bottom: 60px;
+    background-image: url('/img/logo.jpg');
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
 }
 
 .day-button {
     width: 100%;
     height: 100%;
     border: none;
-    background-color: transparent;
+    border-color: rgba(135, 206, 250, 0.8);
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: x-large;
     font-weight: bold;
+    background-color: rgba(135, 206, 250, 0.1);
 }
 
 .welcomeTitle {
@@ -61,6 +69,8 @@ th, td {
     padding: 8px;
     text-align: center;
     height: 90px;
+    background-color: rgba(135, 206, 250, 0.8);
+}
 }
 
 .form {
@@ -80,12 +90,13 @@ th, td {
 .price-table {
     width: 50%;
     margin: auto;
+    border: 3px solid black;
     border-collapse: collapse;
     margin-top: 20px;
 }
 
 .price-table th, .price-table td {
-    border: 1px solid #ddd;
+    border: 2px solid black;
     padding: 8px;
     text-align: left;
 }
@@ -102,16 +113,17 @@ th, td {
     width: 50px; /* Adjust the width as needed */
     height: 40px; /* Adjust the height as needed */
 }
-.container {
-    max-width: 800px;
-    margin: auto;
-    padding: 20px;
-}
 
 .contact-details {
     display: flex;
     justify-content: space-between;
-    margin-top: 20px;
+    margin-top: 2px;
+}
+.containerContactInfo {
+    padding: 20px;
+    margin-top: 100px;
+    border: 3px solid black;
+    background-color: rgba(135, 206, 250, 0.8);
 }
 
 .opening-hours,
@@ -145,3 +157,23 @@ th, td {
     .centered-alert button {
         margin-top: 10px;
     }
+
+.navbar-nav > li {
+    border-right: 1px solid #ddd; /* Light grey border */
+    padding-right: 10px; /* Adjust spacing as needed */
+    transition: background-color 0.3s; /* Smooth transition effect */
+}
+
+    .navbar-nav > li:hover {
+        background-color: lightskyblue; /* Light grey background on hover */
+    }
+
+    .navbar-nav > li:last-child {
+        border-right: none; /* Remove border for the last item */
+    }
+    .avbokaPersonalPage{
+        background-color: red;
+    }
+.bokningPersonalPage {
+    background-color: rgba(135, 206, 250, 0.8);
+}

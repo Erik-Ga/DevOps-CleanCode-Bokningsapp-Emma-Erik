@@ -21,7 +21,6 @@
 <body class="bannerMenu">
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container">
 
                 <a class="navbar-brand bannerLogo" asp-area="" asp-page="/Index"><strong>Fotfager</strong></a>
 
@@ -30,38 +29,38 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
+                <ul class="navbar-nav flex-grow-1">
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" asp-area="" asp-page="/Index">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" asp-area="" asp-page="/Privacy">Privacy</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" asp-area="" asp-page="/Boka behandling">Boka behandling</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" asp-area="" asp-page="/PriceListings">Priser</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" asp-area="" asp-page="/ContactInfo">Tider och kontaktinfo</a>
+                    </li>
+                    @if (user != null)
+                    {
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Index">Home</a>
+                            <a class="nav-link text-dark" asp-area="" asp-page="/PersonalPage">Personlig sida</a>
                         </li>
+                    }
+                    @if (user != null && user.Id == "950b0bde-1c82-4f97-917d-8094c502e306")
+                    {
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Privacy">Privacy</a>
+                            <a class="nav-link text-dark" asp-area="" asp-page="/AdminPage">Admin</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Boka behandling">Boka behandling</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/PriceListings">Priser</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/ContactInfo">Tider och kontaktinfo</a>
-                        </li>
-                        @if (user != null)
-                        {
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-page="/PersonalPage">Personlig sida</a>
-                            </li>
-                        }
-                        @if (user != null && user.Id == "950b0bde-1c82-4f97-917d-8094c502e306")
-                        {
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-page="/AdminPage">Admin</a>
-                            </li>
-                        }
-                    </ul>
+                    }
+                </ul>
                     <partial name="_LoginPartial" />
                 </div>
-            </div>
+
         </nav>
     </header>
     <div class="container">
@@ -73,9 +72,6 @@
     <footer class="border-top footer text-muted">
         <div class="container">
             <div class="row">
-                <div class="col-md-6">
-                    &copy; 2023 - BokningsAppDevOpsCleanCode - <a asp-area="" asp-page="/Privacy">Privacy</a>
-                </div>
                 <div class="col-md-6 text-right">
                     <!-- Social Media Icons -->
                     <div class="social-media-icons">
