@@ -25,14 +25,14 @@ namespace BokningsAppDevOpsCleanCode.UnitTests
         //}
 
         [Fact]
-        public void GetBookingsByUserId_ShouldReturnBookings()
+        public void GetBookingsFromUserWithUserId_ShouldReturnUserHasBooking()
         {
             // Arrange
             var bookingService = new MockDatabase();
             var userId = "sealis2@hotmail.com"; // Replace with a valid user ID
 
             // Act
-            var bookings = bookingService.GetBookingsByUserId(userId);
+            var bookings = bookingService.GetBookingFromPersonWithUserId(userId);
 
 
             // Assert
@@ -40,14 +40,14 @@ namespace BokningsAppDevOpsCleanCode.UnitTests
             // You might have more specific assertions based on the expected behavior of the method.
         }
         [Fact]
-        public void GetBookingsByUserId_ShouldNotReturnBookings()
+        public void GetTreatmentFromUser_ShouldNotReturnThatUserHasBookedTreatment2()
         {
             // Arrange
             var bookingService = new MockDatabase();
             var userId = "sealis@hotmail.com"; // Replace with a valid user ID
 
             // Act
-            var booking = bookingService.GetBookingById(userId);
+            var booking = bookingService.GetBookingFromPersonWithUserId(userId);
             var expected = "treatment2";
             var actual = booking.ChosenTreatment;
 
@@ -55,7 +55,6 @@ namespace BokningsAppDevOpsCleanCode.UnitTests
             Assert.Equal(expected,actual);
             // You might have more specific assertions based on the expected behavior of the method.
         }
-
 
         //[Fact]
         //public void CancelBooking_ShouldRemoveBookingFromDatabase()
