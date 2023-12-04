@@ -1,11 +1,33 @@
-name: Tests
+name: Build Project
 
-on: push
+on:
+  push:
+    branches:
+      
+main
 
 jobs:
-  tests:
-    name: Unit Testing
-    runs-on: windows-latest
+  build:
+    runs-on: ubuntu-latest
+
     steps:
-      - uses: actions/checkout@v2.1.0
-      - run: dotnet test
+
+- name: Set up .NET
+  uses: actions/setup-dotnet@v1
+  with:
+    dotnet-version: '3.1'
+
+- name: Change to project directory
+  run: cd path/to/your/project
+
+- name: Restore dependencies
+  run: dotnet restore BokningsAppDevOpsCleanCode.sln
+
+- name: Build
+  run: dotnet build --configuration Release
+
+- name: Run Tests
+  run: dotnet test --no-build --configuration Release --filter FullyQualifiedName~BokningsAppDevOpsCleanCode.UnitTests.BookingServiceTests
+  working-directory: BokningsAppDevOpsCleanCode
+
+
