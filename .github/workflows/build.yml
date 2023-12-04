@@ -19,7 +19,9 @@ jobs:
         dotnet-version: '7.0'
 
     - name: Restore dependencies
-      run: dotnet restore
+      run: dotnet restore BokningsAppDevOpsCleanCode.sln
+      working-directory: BokningsAppDevOpsCleanCode
 
     - name: Build
       run: dotnet build --configuration Release --no-restore
+      working-directory: BokningsAppDevOpsCleanCode
