@@ -1,0 +1,19 @@
+name: Display Project and Branch
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  display-info:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Display Project and Branch
+      run: |
+        echo "Project Name: $GITHUB_REPOSITORY"
+        echo "Current Branch: $GITHUB_REF"
