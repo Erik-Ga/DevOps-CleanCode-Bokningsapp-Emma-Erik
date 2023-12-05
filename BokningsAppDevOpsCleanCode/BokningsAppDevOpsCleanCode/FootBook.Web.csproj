@@ -1,0 +1,21 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UserSecretsId>aspnet-BokningsAppDevOpsCleanCode-e465818f-11fc-461c-acbc-3ea87147a5cc</UserSecretsId>
+  </PropertyGroup>
+
+
+
+  <ItemGroup>
+    <Folder Include="wwwroot\img\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\FootBook.Core\FootBook.Core.csproj" />
+    <ProjectReference Include="..\FootBook.Infrastructure\FootBook.Infrastructure.csproj" />
+  </ItemGroup>
+
+</Project>

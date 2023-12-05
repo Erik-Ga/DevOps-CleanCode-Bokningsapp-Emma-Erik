@@ -1,5 +1,6 @@
 using BokningsAppDevOpsCleanCode.Data;
 using BokningsAppDevOpsCleanCode.Models;
+using BokningsAppDevOpsCleanCode.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
@@ -9,7 +10,8 @@ namespace BokningsAppDevOpsCleanCode.Pages
 {
     public class Boka_behandlingModel : PageModel
     {
-        private readonly ApplicationDbContext _context;
+        private readonly IBookingService _service;
+
         public int CurrentYear { get; set; }
         public int CurrentMonth { get; set; }
         [TempData]
@@ -20,9 +22,9 @@ namespace BokningsAppDevOpsCleanCode.Pages
         [BindProperty]
         public Booking _Booking { get; set; }
         public List<List<int>> CalendarWeeks { get; set; }
-        public Boka_behandlingModel(ApplicationDbContext context)
+        public Boka_behandlingModel(IBookingService service)
         {
-            _context = context;
+            this._service = service;
         }
         public IActionResult OnGet(int year, int month)
         {
@@ -71,11 +73,9 @@ namespace BokningsAppDevOpsCleanCode.Pages
             };
 
             // Add the booking to the database and save changes
-            _context.Bookings.Add(booking);
-            _context.SaveChanges();
+           
 
-
-            BookingSuccess = true;
+            BookingSuccess = _service.AddBooking(booking);
 
             // Redirect to a confirmation page or back to the calendar page
             return RedirectToPage("/Boka behandling");
@@ -84,11 +84,8 @@ namespace BokningsAppDevOpsCleanCode.Pages
         private Booking GetExistingBooking(DateTime chosenDateTime, string chosenTime)
         {
             // Check if a booking with the same ChosenDateTime and ChosenTime already exists
-            return _context.Bookings
-                .FirstOrDefault(b =>
-                    b.ChosenDateTime == chosenDateTime &&
-                    b.ChosenTime == chosenTime
-                );
+            return _service.CheckAvailability(chosenDateTime, chosenTime);
+                
         }
 
 

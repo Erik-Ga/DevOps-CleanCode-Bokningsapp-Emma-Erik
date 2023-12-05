@@ -4,9 +4,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace BokningsAppDevOpsCleanCode.Data
 {
-    public class ApplicationDbContext : IdentityDbContext<IdentityUser>
+    public class FootBookDbContext : IdentityDbContext<IdentityUser>
     {
-        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
+        public FootBookDbContext(DbContextOptions<FootBookDbContext> options)
             : base(options)
         {
 

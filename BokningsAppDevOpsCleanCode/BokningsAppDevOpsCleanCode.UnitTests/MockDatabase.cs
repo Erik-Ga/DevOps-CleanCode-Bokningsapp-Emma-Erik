@@ -1,5 +1,6 @@
 ﻿using BokningsAppDevOpsCleanCode.Models;
 using BokningsAppDevOpsCleanCode.Services;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -101,6 +102,14 @@ namespace BokningsAppDevOpsCleanCode.UnitTests
 
             return bookings;
         }
+        public bool AddBooking(Booking booking)
+        {
+            return true;
+        }
 
+        public Booking CheckAvailability(DateTime chosenDateTime, string chosenTime)
+        {
+            return new Booking();
+        }
     }
 }

@@ -1,5 +1,6 @@
 using BokningsAppDevOpsCleanCode.Data;
 using BokningsAppDevOpsCleanCode.Services;
+using FootBook.Infrastructure.Data;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
@@ -13,14 +14,13 @@ namespace BokningsAppDevOpsCleanCode
 
             // Add services to the container.
             var connectionString = builder.Configuration.GetConnectionString("DefaultConnection") ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
-            builder.Services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseSqlServer(connectionString));
+            builder.Services.AddFootBookDbContext(connectionString);
             builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
             builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
-                .AddEntityFrameworkStores<ApplicationDbContext>();
+                .AddEntityFrameworkStores<FootBookDbContext>();
             builder.Services.AddRazorPages();
-            builder.Services.AddScoped<BookingService>();
+            builder.Services.AddScoped<IBookingService,BookingService>();
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.

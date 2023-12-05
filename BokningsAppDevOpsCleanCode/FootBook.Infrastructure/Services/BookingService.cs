@@ -9,9 +9,9 @@ namespace BokningsAppDevOpsCleanCode.Services
 {
     public class BookingService : IBookingService
     {
-        private readonly ApplicationDbContext _context;
+        private readonly FootBookDbContext _context;
 
-        public BookingService(ApplicationDbContext context)
+        public BookingService(FootBookDbContext context)
         {
             _context = context;
         }
@@ -33,15 +33,36 @@ namespace BokningsAppDevOpsCleanCode.Services
             return _context.Bookings.FirstOrDefault(b => b.Id == bookingId);
         }
 
-        public void CancelBooking(Booking booking)
+        public bool CancelBooking(Booking booking)
         {
             _context.Bookings.Remove(booking);
-            _context.SaveChanges();
+            var changes = _context.SaveChanges();
+
+            return changes > 0;
         }
         public List<Booking> GetAllBookings()
         {
             // Retrieve all bookings and order by ChosenDateTime
             return _context.Bookings.OrderBy(b => b.ChosenDateTime).ToList();
+        }
+
+        public bool AddBooking(Booking booking)
+        {
+            _context.Bookings.Add(booking);
+            var changes = _context.SaveChanges();
+
+            return changes > 0;
+        }
+
+        public Booking CheckAvailability(DateTime chosenDateTime, string chosenTime)
+        {
+            var availability = _context.Bookings
+                .FirstOrDefault(b =>
+                    b.ChosenDateTime == chosenDateTime &&
+                    b.ChosenTime == chosenTime
+                );
+
+            return availability;
         }
     }
 }
