@@ -2,19 +2,21 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using BokningsAppDevOpsCleanCode.Services;
 using BokningsAppDevOpsCleanCode.Models;
+using Domain.Interfaces;
+
 
 namespace BokningsAppDevOpsCleanCode.Pages
 {
     public class AdminPageModel : PageModel
     {
-        private readonly BookingService _bookingService;
+        private readonly IBookingService _bookingService;
 
-        public AdminPageModel(BookingService bookingService)
+        public AdminPageModel(IBookingService bookingService)
         {
             _bookingService = bookingService;
         }
 
-        public List<Booking> AllBookings { get; set; }
+        public List<IBooking> AllBookings { get; set; }
 
         public void OnGet()
         {

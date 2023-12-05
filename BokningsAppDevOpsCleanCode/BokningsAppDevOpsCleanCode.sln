@@ -4,8 +4,27 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 17.5.33414.496
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BokningsAppDevOpsCleanCode", "BokningsAppDevOpsCleanCode\BokningsAppDevOpsCleanCode.csproj", "{28CCB7F9-57CC-4252-8BFB-EE99FAD9D2E8}"
+	ProjectSection(ProjectDependencies) = postProject
+		{4D3393E2-8696-42F4-8E2E-8F8DD1C52FE0} = {4D3393E2-8696-42F4-8E2E-8F8DD1C52FE0}
+		{FC081B41-6847-455C-9EB9-1159FC6E0564} = {FC081B41-6847-455C-9EB9-1159FC6E0564}
+	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BokningsAppDevOpsCleanCode.UnitTests", "BokningsAppDevOpsCleanCode.UnitTests\BokningsAppDevOpsCleanCode.UnitTests.csproj", "{CB1C3F13-A970-4D06-B13E-FBBE988B3E88}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BokningsAppDevOpsCleanCode.UnitTests", "BokningsAppDevOpsCleanCode.UnitTests\BokningsAppDevOpsCleanCode.UnitTests.csproj", "{CB1C3F13-A970-4D06-B13E-FBBE988B3E88}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain+Application", "Domain\Domain+Application.csproj", "{4D3393E2-8696-42F4-8E2E-8F8DD1C52FE0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure", "Infrastructure\Infrastructure.csproj", "{FC081B41-6847-455C-9EB9-1159FC6E0564}"
+	ProjectSection(ProjectDependencies) = postProject
+		{4D3393E2-8696-42F4-8E2E-8F8DD1C52FE0} = {4D3393E2-8696-42F4-8E2E-8F8DD1C52FE0}
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Domain", "Domain", "{766EF2D4-CF92-40EF-BEC4-9CC47CC32F6C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{97413ADA-6631-409A-8648-5AEA30431B40}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UI", "UI", "{2297D515-03EC-4EA8-B015-D477F89755A4}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{07BE694D-594F-48EF-A5CE-727B927285DC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,9 +40,23 @@ Global
 		{CB1C3F13-A970-4D06-B13E-FBBE988B3E88}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CB1C3F13-A970-4D06-B13E-FBBE988B3E88}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CB1C3F13-A970-4D06-B13E-FBBE988B3E88}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4D3393E2-8696-42F4-8E2E-8F8DD1C52FE0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4D3393E2-8696-42F4-8E2E-8F8DD1C52FE0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4D3393E2-8696-42F4-8E2E-8F8DD1C52FE0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4D3393E2-8696-42F4-8E2E-8F8DD1C52FE0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FC081B41-6847-455C-9EB9-1159FC6E0564}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FC081B41-6847-455C-9EB9-1159FC6E0564}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FC081B41-6847-455C-9EB9-1159FC6E0564}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FC081B41-6847-455C-9EB9-1159FC6E0564}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{28CCB7F9-57CC-4252-8BFB-EE99FAD9D2E8} = {2297D515-03EC-4EA8-B015-D477F89755A4}
+		{CB1C3F13-A970-4D06-B13E-FBBE988B3E88} = {07BE694D-594F-48EF-A5CE-727B927285DC}
+		{4D3393E2-8696-42F4-8E2E-8F8DD1C52FE0} = {766EF2D4-CF92-40EF-BEC4-9CC47CC32F6C}
+		{FC081B41-6847-455C-9EB9-1159FC6E0564} = {97413ADA-6631-409A-8648-5AEA30431B40}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {B4B41506-4134-4CC1-8E82-25CA6F4F4CC8}

@@ -4,6 +4,7 @@ using System.Linq;
 using BokningsAppDevOpsCleanCode.Data;
 using BokningsAppDevOpsCleanCode.Models;
 using Microsoft.EntityFrameworkCore;
+using Domain.Interfaces;
 
 namespace BokningsAppDevOpsCleanCode.Services
 {
@@ -16,7 +17,7 @@ namespace BokningsAppDevOpsCleanCode.Services
             _context = context;
         }
 
-        public List<Booking> GetBookingsByUserId(string userId)
+        public List<IBooking> GetBookingsByUserId(string userId)
         {
             return _context.Bookings
                 .Where(b => b.UserId == userId)
@@ -24,21 +25,21 @@ namespace BokningsAppDevOpsCleanCode.Services
                 .ToList();
         }
 
-        public Booking GetBookingById(string userId)
+        public IBooking GetBookingById(string userId)
         {
             return _context.Bookings.FirstOrDefault(b => b.UserId == userId);
         }
-        public Booking GetBookingByIdInt(int bookingId)
+        public IBooking GetBookingByIdInt(int bookingId)
         {
             return _context.Bookings.FirstOrDefault(b => b.Id == bookingId);
         }
 
-        public void CancelBooking(Booking booking)
+        public void CancelBooking(IBooking booking)
         {
             _context.Bookings.Remove(booking);
             _context.SaveChanges();
         }
-        public List<Booking> GetAllBookings()
+        public List<IBooking> GetAllBookings()
         {
             // Retrieve all bookings and order by ChosenDateTime
             return _context.Bookings.OrderBy(b => b.ChosenDateTime).ToList();

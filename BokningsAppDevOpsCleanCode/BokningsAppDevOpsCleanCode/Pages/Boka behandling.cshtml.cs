@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using System.Globalization;
+using Domain.Interfaces;
 
 namespace BokningsAppDevOpsCleanCode.Pages
 {
@@ -18,7 +19,7 @@ namespace BokningsAppDevOpsCleanCode.Pages
         public bool BookingSuccess { get; set; }
 
         [BindProperty]
-        public Booking _Booking { get; set; }
+        public IBooking _Booking { get; set; }
         public List<List<int>> CalendarWeeks { get; set; }
         public Boka_behandlingModel(ApplicationDbContext context)
         {
@@ -61,7 +62,7 @@ namespace BokningsAppDevOpsCleanCode.Pages
             }
 
             // Create a new Booking object
-            var booking = new Booking
+            var booking = new IBooking
             {
                 ChosenDateTime = chosenDateTime,
                 ChosenTime = time,
@@ -81,7 +82,7 @@ namespace BokningsAppDevOpsCleanCode.Pages
             return RedirectToPage("/Boka behandling");
         }
 
-        private Booking GetExistingBooking(DateTime chosenDateTime, string chosenTime)
+        private IBooking GetExistingBooking(DateTime chosenDateTime, string chosenTime)
         {
             // Check if a booking with the same ChosenDateTime and ChosenTime already exists
             return _context.Bookings

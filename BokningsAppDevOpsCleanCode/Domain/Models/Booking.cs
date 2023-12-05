@@ -1,12 +1,14 @@
-﻿namespace BokningsAppDevOpsCleanCode.Models
+﻿using Domain.Interfaces;
+
+namespace BokningsAppDevOpsCleanCode.Models
 {
-    public class Booking
+    internal class Booking : IBooking
     {
         public int Id { get; set; }
         public DateTime ChosenDateTime { get; set; }
         public string ChosenTime { get; set; }
         public string ChosenTreatment { get; set; }
         public string CustomerName { get; set; }
-        public string UserId { get; set; }  
+        public string UserId { get; set; }
     }
 }

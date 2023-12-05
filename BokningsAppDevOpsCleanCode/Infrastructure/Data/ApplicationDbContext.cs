@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-
+using Domain.Interfaces;
 namespace BokningsAppDevOpsCleanCode.Data
 {
     public class ApplicationDbContext : IdentityDbContext<IdentityUser>
@@ -11,6 +11,6 @@ namespace BokningsAppDevOpsCleanCode.Data
         {
 
         }
-        public DbSet<Models.Booking> Bookings { get; set; }
+        public DbSet<IBooking> Bookings { get; set; }
     }
 }
