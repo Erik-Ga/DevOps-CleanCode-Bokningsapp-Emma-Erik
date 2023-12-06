@@ -55,8 +55,24 @@ namespace BokningsAppDevOpsCleanCode.UnitTests
             Assert.Equal(expected,actual);
             // You might have more specific assertions based on the expected behavior of the method.
         }
-
-        //[Fact]
+        [Theory]
+        [InlineData("emma@hotmail.com")]
+        [InlineData("erik@hotmail.com")]
+        [InlineData("tezla@hotmail.com")]
+        [InlineData("sealis@hotmail.com")]
+        [InlineData("cheato@hotmail.com")]
+        [InlineData("drakis@hotmail.com")]
+        public void CheckIfCustomersByUserIdHasBookings_ShouldReturnTrue(string userId)
+        {
+            //Arrange
+            var bookingService = new MockDatabase();
+            //Act
+            var expected = true;
+            var actual = bookingService.GetAndCheckIfCustomersHasBookings(userId);
+            //Assert
+            Assert.Equal(expected, actual);
+        }
+        [Fact]
         //public void CancelBooking_ShouldRemoveBookingFromDatabase()
         //{
         //    // Arrange

@@ -9,11 +9,11 @@
     <!-- Navigation buttons -->
     <div>
         <a class="btn btn-primary" asp-page-handler="OnGetPreviousMonth" asp-route-year="@(Model.CurrentMonth == 1 ? Model.CurrentYear - 1 : Model.CurrentYear)"
-           asp-route-month="@(Model.CurrentMonth == 1 ? 12 : Model.CurrentMonth - 1)">Previous Month</a>
+           asp-route-month="@(Model.CurrentMonth == 1 ? 12 : Model.CurrentMonth - 1)">Föregående månad</a>
         <a class="btn btn-primary" asp-page-handler="OnGetNextMonth" asp-route-year="@(Model.CurrentMonth == 12 ? Model.CurrentYear + 1 : Model.CurrentYear)"
-           asp-route-month="@(Model.CurrentMonth == 12 ? 1 : Model.CurrentMonth + 1)">Next Month</a>
+           asp-route-month="@(Model.CurrentMonth == 12 ? 1 : Model.CurrentMonth + 1)">Kommande månad</a>
     </div>
-
+    <br />
     <table>
         <tbody>
             @foreach (var week in Model.CalendarWeeks)
@@ -87,8 +87,9 @@
 
             <br>
 
-            <button class="formButton btn-danger" type="button" onclick="hideForm()">Close Form</button>
-            <button class="formButton btn-success" type="submit">Book Appointment</button>
+            <button class="formButton btn-danger" type="button" onclick="hideForm()">Stäng</button>
+            <button class="formButton btn-success" type="submit">Boka behandling</button>
+            <br />
         </form>
     </div>
 

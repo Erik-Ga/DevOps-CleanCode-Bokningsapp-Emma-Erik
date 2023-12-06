@@ -14,7 +14,7 @@
                     <p>Behandling: @booking.ChosenTreatment</p>
                     <p>Namn: @booking.CustomerName</p>
                     <form method="post" asp-page-handler="CancelBooking" asp-route-bookingId="@booking.UserId">
-                        <button class="avbokaPersonalPage" type="submit">Cancel Booking</button>
+                        <button class="avboka" type="submit">Cancel Booking</button>
                     </form>
                 </div>
             }
@@ -22,7 +22,7 @@
     }
     else
     {
-        <p>No bookings found.</p>
+        <p>Du har inga bokningar :(</p>
     }
 </div>
 

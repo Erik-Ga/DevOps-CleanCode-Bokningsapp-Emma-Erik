@@ -12,6 +12,13 @@ html {
     box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
 }
 
+.btn-primary{
+    font-size: x-large;
+    background-color:skyblue;
+    border-color: black;
+    border-width: 2px;
+    color: black;
+}
 .bannerMenu {
     font-family: 'Monotype Corsiva';
     font-size: 30px;
@@ -28,8 +35,15 @@ html {
     min-height: 100%;
 }
 
-footer{
+footer {
     text-align:center;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    background-color: #f1f1f1; /* Optional: Add a background color for visibility */
+    padding: 10px; /* Optional: Add padding for better appearance */
+    background-color:skyblue;
 }
 body {
     margin-bottom: 60px;
@@ -43,16 +57,21 @@ body {
     width: 100%;
     height: 100%;
     border: none;
-    border-color: rgba(135, 206, 250, 0.8);
+    border-color: skyblue;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: x-large;
     font-weight: bold;
-    background-color: rgba(135, 206, 250, 0.1);
+    background-color: skyblue;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s, transform 0.3s;
 }
-
+.day-button:hover {
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    transform: translateY(-2px);
+}
 .welcomeTitle {
     text-align: center;
     font-family: 'Monotype Corsiva';
@@ -69,17 +88,20 @@ th, td {
     padding: 8px;
     text-align: center;
     height: 90px;
-    background-color: rgba(135, 206, 250, 0.8);
+    background-color:skyblue;
 }
-}
+
 
 .form {
     border: 3px solid black;
     padding: 30px;
+    background-color:skyblue;
 }
 
 .formButton {
     margin-top: 100px;
+    border-width: 3px;
+    border-color: black;
 }
 
 .disabled-day {
@@ -123,7 +145,7 @@ th, td {
     padding: 20px;
     margin-top: 100px;
     border: 3px solid black;
-    background-color: rgba(135, 206, 250, 0.8);
+    background-color:skyblue;
 }
 
 .opening-hours,
@@ -154,9 +176,9 @@ th, td {
     text-align: center;
 }
 
-    .centered-alert button {
-        margin-top: 10px;
-    }
+.centered-alert button {
+    margin-top: 10px;
+}
 
 .navbar-nav > li {
     border-right: 1px solid #ddd; /* Light grey border */
@@ -165,15 +187,18 @@ th, td {
 }
 
     .navbar-nav > li:hover {
-        background-color: lightskyblue; /* Light grey background on hover */
+        background-color: skyblue; /* Light grey background on hover */
     }
 
     .navbar-nav > li:last-child {
         border-right: none; /* Remove border for the last item */
     }
-    .avbokaPersonalPage{
+    .avboka{
         background-color: red;
     }
 .bokningPersonalPage {
+    background-color: rgba(135, 206, 250, 0.8);
+}
+.bookingsAdminPage {
     background-color: rgba(135, 206, 250, 0.8);
 }
