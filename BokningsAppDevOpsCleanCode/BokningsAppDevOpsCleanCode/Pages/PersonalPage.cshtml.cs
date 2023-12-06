@@ -27,7 +27,7 @@ namespace BokningsAppDevOpsCleanCode.Pages
             return Page();
         }
 
-        public async Task<IActionResult> OnPostCancelBookingAsync(string bookingId)
+        public async Task<IActionResult> OnPostCancelBookingAsync(int bookingId)
         {
             var user = await _userManager.GetUserAsync(User);
 
@@ -36,7 +36,7 @@ namespace BokningsAppDevOpsCleanCode.Pages
                 return RedirectToPage("/Account/Login");
             }
 
-            var booking = _service.GetBookingById(bookingId);
+            var booking = _service.GetBookingByIdInt(bookingId);
 
             if (booking != null && booking.UserId == user.UserName)
             {
