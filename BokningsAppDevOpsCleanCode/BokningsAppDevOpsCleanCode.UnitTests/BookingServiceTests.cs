@@ -72,7 +72,7 @@ namespace BokningsAppDevOpsCleanCode.UnitTests
             //Assert
             Assert.Equal(expected, actual);
         }
-        [Fact]
+        //[Fact]
         //public void CancelBooking_ShouldRemoveBookingFromDatabase()
         //{
         //    // Arrange
