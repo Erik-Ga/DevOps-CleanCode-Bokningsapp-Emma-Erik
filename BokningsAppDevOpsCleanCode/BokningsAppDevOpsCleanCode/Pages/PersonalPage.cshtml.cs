@@ -9,12 +9,12 @@ namespace BokningsAppDevOpsCleanCode.Pages
     public class PersonalPageModel : PageModel
     {
         private readonly UserManager<IdentityUser> _userManager;
-        private readonly BookingService _bookingService;
+        private readonly IBookingService _service;
 
-        public PersonalPageModel(UserManager<IdentityUser> userManager, BookingService bookingService)
+        public PersonalPageModel(UserManager<IdentityUser> userManager, IBookingService service)
         {
             _userManager = userManager;
-            _bookingService = bookingService;
+            this._service = service;
         }
         public List<Booking> Bookings { get; set; }
 
@@ -22,12 +22,12 @@ namespace BokningsAppDevOpsCleanCode.Pages
         {
             var user = await _userManager.GetUserAsync(User);
 
-            Bookings = _bookingService.GetBookingsByUserId(user.UserName);
+            Bookings = _service.GetBookingsByUserId(user.UserName);
 
             return Page();
         }
 
-        public async Task<IActionResult> OnPostCancelBookingAsync(string bookingId)
+        public async Task<IActionResult> OnPostCancelBookingAsync(int bookingId)
         {
             var user = await _userManager.GetUserAsync(User);
 
@@ -36,12 +36,12 @@ namespace BokningsAppDevOpsCleanCode.Pages
                 return RedirectToPage("/Account/Login");
             }
 
-            var booking = _bookingService.GetBookingById(bookingId);
+            var booking = _service.GetBookingByIdInt(bookingId);
 
             if (booking != null && booking.UserId == user.UserName)
             {
                 // Implement the logic to cancel/delete the booking from the database
-                _bookingService.CancelBooking(booking);
+                _service.CancelBooking(booking);
 
                 // Redirect to refresh the page after cancellation
                 return RedirectToPage("/PersonalPage");

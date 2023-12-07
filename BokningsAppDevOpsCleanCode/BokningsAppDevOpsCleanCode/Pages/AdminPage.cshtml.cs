@@ -7,9 +7,9 @@ namespace BokningsAppDevOpsCleanCode.Pages
 {
     public class AdminPageModel : PageModel
     {
-        private readonly BookingService _bookingService;
+        private readonly IBookingService _bookingService;
 
-        public AdminPageModel(BookingService bookingService)
+        public AdminPageModel(IBookingService bookingService)
         {
             _bookingService = bookingService;
         }
@@ -36,9 +36,11 @@ namespace BokningsAppDevOpsCleanCode.Pages
                 // Redirect to refresh the page after cancellation
                 return RedirectToPage("/AdminPage");
             }
-
-            // Redirect to the current page if the booking is not found
-            return RedirectToPage("/AdminPage");
+            else
+            {
+                // Redirect to the current page if the booking is not found
+                return RedirectToPage("/AdminPage");
+            }
         }
     }
 }
