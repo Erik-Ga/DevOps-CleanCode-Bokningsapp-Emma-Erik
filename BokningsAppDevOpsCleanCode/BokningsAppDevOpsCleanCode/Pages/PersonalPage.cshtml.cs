@@ -20,6 +20,7 @@ namespace BokningsAppDevOpsCleanCode.Pages
 
         public async Task<IActionResult> OnGet()
         {
+            // Gets information based on currently logged in identity user
             var user = await _userManager.GetUserAsync(User);
 
             Bookings = _service.GetBookingsByUserId(user.UserName);
@@ -29,6 +30,7 @@ namespace BokningsAppDevOpsCleanCode.Pages
 
         public async Task<IActionResult> OnPostCancelBookingAsync(int bookingId)
         {
+            // Method for canceling bookings
             var user = await _userManager.GetUserAsync(User);
 
             if (user == null)
@@ -40,7 +42,6 @@ namespace BokningsAppDevOpsCleanCode.Pages
 
             if (booking != null && booking.UserId == user.UserName)
             {
-                // Implement the logic to cancel/delete the booking from the database
                 _service.CancelBooking(booking);
 
                 // Redirect to refresh the page after cancellation
