@@ -1,7 +1,4 @@
-using BokningsAppDevOpsCleanCode.Data;
 using BokningsAppDevOpsCleanCode.Models;
-using BokningsAppDevOpsCleanCode.Services;
-using Microsoft.EntityFrameworkCore;
 
 namespace BokningsAppDevOpsCleanCode.UnitTests
 {
@@ -76,7 +73,7 @@ namespace BokningsAppDevOpsCleanCode.UnitTests
         [InlineData(14)]
         [InlineData(15)]
         [InlineData(16)]
-        public void CancelBookingById_ShouldReturnFalse(int id) 
+        public void CancelBookingById_ShouldReturnFalse(int id)
         {
             //Arrange
             var bookingService = new MockDatabase();
@@ -103,7 +100,7 @@ namespace BokningsAppDevOpsCleanCode.UnitTests
             // You might have more specific assertions based on the expected behavior of the method.
         }
         [Fact]
-        public void GetTreatmentFromUser_ShouldNotReturnThatUserHasBookedTreatment2()
+        public void GetTreatmentFromUser_ShouldReturnThatUserHasBookedTreatment2()
         {
             // Arrange
             var bookingService = new MockDatabase();
@@ -115,7 +112,7 @@ namespace BokningsAppDevOpsCleanCode.UnitTests
             var actual = booking.ChosenTreatment;
 
             // Assert
-            Assert.Equal(expected,actual);
+            Assert.Equal(expected, actual);
             // You might have more specific assertions based on the expected behavior of the method.
         }
         [Theory]
@@ -155,6 +152,5 @@ namespace BokningsAppDevOpsCleanCode.UnitTests
 
             Assert.Equal(expected, actual);
         }
-
     }
 }
