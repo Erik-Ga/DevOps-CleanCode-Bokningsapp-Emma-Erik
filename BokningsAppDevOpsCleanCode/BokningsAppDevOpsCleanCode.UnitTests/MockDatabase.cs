@@ -11,6 +11,7 @@ namespace BokningsAppDevOpsCleanCode.UnitTests
 {
     public class MockDatabase : IBookingService
     {
+        // All the methods used for the MockDatabase unittesting
         public bool AddBooking(Booking booking)
         {
             // Check for null booking

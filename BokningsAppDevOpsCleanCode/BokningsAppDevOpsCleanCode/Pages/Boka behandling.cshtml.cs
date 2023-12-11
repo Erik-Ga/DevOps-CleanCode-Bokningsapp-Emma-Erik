@@ -128,12 +128,13 @@ namespace BokningsAppDevOpsCleanCode.Pages
 
         private bool IsValidYearMonth(int year, int month)
         {
-            //Validates the year and month
+
             return year >= 1 && month >= 1 && month <= 12;
         }
 
         private List<List<int>> GenerateCalendar(int year, int month)
         {
+            // Method for generating the calander
             List<List<int>> weeks = new List<List<int>>();
             DateTime firstDayOfMonth = new DateTime(year, month, 1);
             int daysInMonth = DateTime.DaysInMonth(year, month);
