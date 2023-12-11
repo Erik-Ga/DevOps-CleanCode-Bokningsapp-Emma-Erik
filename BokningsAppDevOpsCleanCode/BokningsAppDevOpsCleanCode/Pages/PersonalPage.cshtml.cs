@@ -32,7 +32,7 @@ namespace BokningsAppDevOpsCleanCode.Pages
         {
             // Method for canceling bookings
             var user = await _userManager.GetUserAsync(User);
-
+            //If you're not logged in you'll be redirected to the Log In Page
             if (user == null)
             {
                 return RedirectToPage("/Account/Login");

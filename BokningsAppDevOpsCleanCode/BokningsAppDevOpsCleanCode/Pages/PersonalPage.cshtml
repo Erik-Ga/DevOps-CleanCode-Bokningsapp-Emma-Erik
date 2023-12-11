@@ -1,6 +1,7 @@
 ﻿@page
 @model BokningsAppDevOpsCleanCode.Pages.PersonalPageModel
 
+@* Shows all bookings of current user*@
 <div>
     @if (Model.Bookings != null && Model.Bookings.Any())
     {
@@ -22,7 +23,7 @@
     }
     else
     {
-                <p class="bokningPersonalPage">Du har inga bokningar 🥺</p>
+        <p class="bokningPersonalPage">Du har inga bokningar 🥺</p>
     }
 </div>
 

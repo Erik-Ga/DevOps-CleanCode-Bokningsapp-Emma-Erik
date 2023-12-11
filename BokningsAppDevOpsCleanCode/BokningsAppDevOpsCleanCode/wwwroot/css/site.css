@@ -161,7 +161,12 @@ th, td {
 .contact-methods h3 {
     margin-bottom: 10px;
 }
+.frontPage{
+    text-align:center;
+    width: 1280px;
+    margin: 10px;
 
+}
 .contact-methods a {
     color: #007bff;
 }

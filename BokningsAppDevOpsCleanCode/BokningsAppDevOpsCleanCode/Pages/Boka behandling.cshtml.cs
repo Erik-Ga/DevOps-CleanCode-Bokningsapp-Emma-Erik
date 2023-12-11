@@ -88,8 +88,6 @@ namespace BokningsAppDevOpsCleanCode.Pages
                 
         }
 
-
-
         public IActionResult OnGetNextMonth()
         {
             // Update the calendar for the next month
@@ -130,7 +128,7 @@ namespace BokningsAppDevOpsCleanCode.Pages
 
         private bool IsValidYearMonth(int year, int month)
         {
-            // Checks if year and month are valid
+
             return year >= 1 && month >= 1 && month <= 12;
         }
 

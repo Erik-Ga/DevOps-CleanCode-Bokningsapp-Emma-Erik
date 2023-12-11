@@ -14,6 +14,33 @@ namespace BokningsAppDevOpsCleanCode.UnitTests
         // All the methods used for the MockDatabase unittesting
         public bool AddBooking(Booking booking)
         {
+            // Check for null booking
+            if (booking == null)
+            {
+                throw new ArgumentNullException(nameof(booking), "Bokningen kan inte vara null");
+            }
+
+            // Validate specific properties of the booking
+            if (string.IsNullOrWhiteSpace(booking.UserId))
+            {
+                throw new ArgumentException("UserId saknas", nameof(booking.UserId));
+            }
+
+            if (booking.ChosenDateTime == DateTime.MinValue)
+            {
+                throw new ArgumentException("ChosenDateTime saknas eller är felaktig", nameof(booking.ChosenDateTime));
+            }
+
+            if (string.IsNullOrWhiteSpace(booking.ChosenTime))
+            {
+                throw new ArgumentException("ChosenTime saknas eller ör felaktig", nameof(booking.ChosenTime));
+            }
+
+            if (string.IsNullOrWhiteSpace(booking.ChosenTreatment))
+            {
+                throw new ArgumentException("ChosenTreatment saknas", nameof(booking.ChosenTreatment));
+            }
+
             return true;
         }
         public bool CancelBooking(Booking booking)

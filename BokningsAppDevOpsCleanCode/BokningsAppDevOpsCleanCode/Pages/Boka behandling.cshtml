@@ -114,15 +114,15 @@
         {
             // Display an alert with the error message
             <text>
-                        var alertDiv = document.createElement('div');
+            var alertDiv = document.createElement('div');
             alertDiv.className = 'centered-alert';
 
             var message = document.createElement('div');
-            message.textContent = 'Tid redan bokad, vänligen försök igen med annan tid!';
+            message.textContent = 'Tiden du valt redan bokad, vänligen försök igen med annan tid!';
             alertDiv.appendChild(message);
 
             var closeButton = document.createElement('button');
-            closeButton.textContent = 'Stäng';
+            closeButton.textContent = 'Okej...';
             closeButton.onclick = function () {
                 alertDiv.style.display = 'none'; // Hide the alert
                 // Set IsTimeBooked to false
@@ -138,7 +138,7 @@
         {
             // Display an alert with the error message
             <text>
-                                    var alertDiv = document.createElement('div');
+            var alertDiv = document.createElement('div');
             alertDiv.className = 'centered-alert';
 
             var message = document.createElement('div');
