@@ -73,7 +73,6 @@ namespace BokningsAppDevOpsCleanCode.Pages
             };
 
             // Add the booking to the database and save changes
-           
 
             BookingSuccess = _service.AddBooking(booking);
 

@@ -73,11 +73,11 @@
 
             <label for="treatment">Välj behandling:</label>
             <select id="treatment" name="treatment">
-                <option value="treatment1">Fotmassage</option>
-                <option value="treatment2">Peeling</option>
-                <option value="treatment3">Nagelvård</option>
-                <option value="treatment4">Liktornbehandling</option>
-                <option value="treatment5">Medicinsk fotvård</option>
+                <option value="Fotmassage">Fotmassage</option>
+                <option value="Peeling">Peeling</option>
+                <option value="Nagelvård">Nagelvård</option>
+                <option value="Liktornbehandling">Liktornbehandling</option>
+                <option value="Medicinsk fotvård">Medicinsk fotvård</option>
             </select>
 
             <br>
@@ -86,9 +86,9 @@
             <input type="text" id="name" name="name">
 
             <br>
-
+            <p id="errorMessage" style="color: red;">Vänligen fyll i ett namn</p>
             <button class="formButton btn-danger" type="button" onclick="hideForm()">Stäng</button>
-            <button class="formButton btn-success" type="submit">Boka behandling</button>
+            <button class="formButton btn-success" type="submit" id="submitButton" disabled>Boka behandling</button>
             <br />
         </form>
     </div>
@@ -159,4 +159,22 @@
             </text>
         }
     </script>
+    <script>
+    var nameInput = document.getElementById('name');
+    var submitButton = document.getElementById('submitButton');
+
+    nameInput.addEventListener('input', function() {
+        submitButton.disabled = nameInput.value.trim() === '';
+    });
+</script>
+<script>
+    var nameInput = document.getElementById('name');
+    var submitButton = document.getElementById('submitButton');
+    var errorMessage = document.getElementById('errorMessage');
+
+    nameInput.addEventListener('input', function() {
+        errorMessage.style.display = nameInput.value.trim() === '' ? 'block' : 'none';
+        submitButton.disabled = nameInput.value.trim() === '';
+    });
+</script>
 </div>
